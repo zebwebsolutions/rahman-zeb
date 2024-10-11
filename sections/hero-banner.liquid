@@ -3,7 +3,7 @@
   <!-- Header -->
   <div class="hero-banner__header">
     {% if section.settings.header_logo != blank %}
-      <img src="{{ section.settings.header_logo | image_url: width: 150 }}" alt="Logo" class="hero-banner__logo">
+      <img src="{{ section.settings.header_logo | img_url: 'medium' }}" alt="Logo" class="hero-banner__logo">
     {% endif %}
     <div class="hero-banner__header-text">
       <h1>{{ section.settings.header_text }}</h1>
@@ -100,5 +100,45 @@
 
 <!-- Styles for the Hero Banner -->
 <style>
+.hero-banner {
+  text-align: center;
+  padding: 40px 20px;
+}
 
+.hero-banner__header,
+.hero-banner__content,
+.hero-banner__footer {
+  margin-bottom: 30px;
+}
+
+.hero-banner__logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.hero-banner__header-text h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.hero-banner__header-button,
+.hero-banner__content-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #5a67d8;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.hero-banner__content h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.hero-banner__footer p {
+  font-size: 1em;
+  color: #718096;
+}
 </style>
