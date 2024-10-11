@@ -26,9 +26,7 @@
 <div id="product-modal" class="product-modal">
   <div class="modal-content">
     <span class="close-button">&times;</span>
-    <div class="modal-body">
-
-    </div>
+    <div class="modal-body"></div>
   </div>
 </div>
 
@@ -128,51 +126,86 @@
     top: 38%;
     left: 75%;
   }
+  #product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background: #fff;
+    max-width: 311px;
+    position: relative;
+    padding: 25px 20px;
+  }
+  .modal-content img {
+    width: 120px;
+    height: 140px;
+    object-fit: cover;
+    margin-right: 8px;
+  }
+  #modal-product-info {
+    display: flex;
+    margin-top: 15px;
+  }
+  .close-button {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    text-align: right;
+    cursor: pointer;
+    color: #000;
+    font-size: 20px;
+  }
 </style>
 
 <!-- Scripts for the Featured Products Grid -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     var modal = document.getElementById('product-modal');
     var modalBody = modal.querySelector('.modal-body');
     var closeButton = modal.querySelector('.close-button');
     var productLinks = document.querySelectorAll('.featured-products-grid .plus-icon');
 
-    productLinks.forEach(function(link) {
-      link.addEventListener('click', function(event) {
+    productLinks.forEach(function (link) {
+      link.addEventListener('click', function (event) {
         event.preventDefault();
         var handle = this.parentElement.getAttribute('data-handle');
 
         fetch('/products/' + handle + '.js')
-          .then(function(response) {
+          .then(function (response) {
             return response.json();
           })
-          .then(function(data) {
+          .then(function (data) {
             showPopUp(data);
           });
       });
     });
 
     function showPopUp(data) {
-      let modalContent = document.createElement("div");
-      modalContent.id = "modal-product-info";
+      let modalContent = document.createElement('div');
+      modalContent.id = 'modal-product-info';
 
-      let lhs = document.createElement("div");
-      lhs.classList.add("lhs")
+      let lhs = document.createElement('div');
+      lhs.classList.add('lhs');
 
-      let rhs = document.createElement("div");
-      rhs.classList.add("rhs")
+      let rhs = document.createElement('div');
+      rhs.classList.add('rhs');
 
-      let productPic = document.createElement("div");
-      productPic.id = "product-pic";
+      let productPic = document.createElement('div');
+      productPic.id = 'product-pic';
 
-      let productTitle = document.createElement("div");
-      productTitle.id = "product-title"
+      let productTitle = document.createElement('div');
+      productTitle.id = 'product-title';
 
-      let productPrice = document.createElement("div");
-      productPrice.id = "product-price";
+      let productPrice = document.createElement('div');
+      productPrice.id = 'product-price';
 
-      let productDescription = document.createElement("div");
+      let productDescription = document.createElement('div');
       productDescription.id = 'product-description';
 
       lhs.appendChild(productPic);
@@ -186,22 +219,22 @@
       modalBody.appendChild(modalContent);
 
       productPic.innerHTML = data.featured_image;
-      productPrice.innerHTML = data.title;
+      productTitle.innerHTML = data.title;
       productPrice.innerHTML = data.price;
       productDescription.innerHTML = data.description;
 
-      modal.style.display = "block";
+      modal.style.display = 'block';
     }
 
-    closeButton.addEventListener('click', function() {
+    closeButton.addEventListener('click', function () {
       modal.style.display = 'none';
-      modalContent.innerHTML = '';
+      modalBody.innerHTML = '';
     });
 
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
       if (event.target == modal) {
         modal.style.display = 'none';
-        modalContent.innerHTML = ''
+        modalBody.innerHTML = '';
       }
     });
   });
