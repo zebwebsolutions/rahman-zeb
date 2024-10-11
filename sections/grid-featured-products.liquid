@@ -150,11 +150,16 @@ document.addEventListener('DOMContentLoaded', function() {
           return response.text();
         })
         .then(function(data) {
-          modalContent.innerHTML = data;
-          modal.style.display = 'block';
+          showPopUp(data);
         });
     });
   });
+
+  function showPopUp(data) {
+    console.log(data);
+    modal.innerHTML = data;
+    modal.style.display = "block";
+  }
 
   closeButton.addEventListener('click', function() {
     modal.style.display = 'none';
