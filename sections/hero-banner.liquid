@@ -1,0 +1,144 @@
+<!-- Hero Banner Section -->
+<div class="hero-banner">
+  <!-- Header -->
+  <div class="hero-banner__header">
+    {% if section.settings.header_logo != blank %}
+      <img src="{{ section.settings.header_logo | img_url: 'medium' }}" alt="Logo" class="hero-banner__logo">
+    {% endif %}
+    <div class="hero-banner__header-text">
+      <h1>{{ section.settings.header_text }}</h1>
+    </div>
+    {% if section.settings.header_button_text != blank and section.settings.header_button_link != blank %}
+      <a href="{{ section.settings.header_button_link }}" class="hero-banner__header-button">
+        {{ section.settings.header_button_text }}
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Content Area -->
+  <div class="hero-banner__content">
+    <h2>{{ section.settings.content_title }}</h2>
+    <p>{{ section.settings.content_description }}</p>
+    {% if section.settings.content_button_text != blank and section.settings.content_button_link != blank %}
+      <a href="{{ section.settings.content_button_link }}" class="hero-banner__content-button">
+        {{ section.settings.content_button_text }}
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Footer -->
+  <div class="hero-banner__footer">
+    <p>{{ section.settings.footer_text }}</p>
+  </div>
+</div>
+
+<!-- Section Settings Schema -->
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "header_logo",
+      "label": "Header Logo"
+    },
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Header Middle Text",
+      "default": "Welcome to Our Store"
+    },
+    {
+      "type": "url",
+      "id": "header_button_link",
+      "label": "Header Button Link"
+    },
+    {
+      "type": "text",
+      "id": "header_button_text",
+      "label": "Header Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "content_title",
+      "label": "Content Title",
+      "default": "Our Products"
+    },
+    {
+      "type": "textarea",
+      "id": "content_description",
+      "label": "Content Description",
+      "default": "Check out our range of products."
+    },
+    {
+      "type": "url",
+      "id": "content_button_link",
+      "label": "Content Button Link"
+    },
+    {
+      "type": "text",
+      "id": "content_button_text",
+      "label": "Content Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "Thank you for visiting our store."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- Styles for the Hero Banner -->
+<style>
+.hero-banner {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-banner__header,
+.hero-banner__content,
+.hero-banner__footer {
+  margin-bottom: 30px;
+}
+
+.hero-banner__logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.hero-banner__header-text h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.hero-banner__header-button,
+.hero-banner__content-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #5a67d8;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.hero-banner__content h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.hero-banner__footer p {
+  font-size: 1em;
+  color: #718096;
+}
+</style>
