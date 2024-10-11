@@ -6,6 +6,9 @@
       {% if product %}
         <div class="grid-item">
           <a href="javascript:void(0);" class="product-link {{ product.handle }}" data-handle="{{ product.handle }}" data-id="{{ product.id }}">
+            <span class="plus-icon">
+              <img src="{{ 'plus-icon.svg' | asset_url }}" height="22px" width="22px" />
+            </span>
             <img src="{{ product | image_url: width: 500 }}" alt="{{ product.title }}">
           </a>
         </div>
