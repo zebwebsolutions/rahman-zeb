@@ -251,6 +251,8 @@
 
     function addColorInputs(colors, div) {
       for(let color of colors.values) {
+        let colorDiv = documentcreateElement("div");
+        colorVariantDiv.classList.add("color-variant");
         let colorInput = document.createElement("input");
         let colorName = color.toLowerCase();
         colorInput.type = "radio";
@@ -258,14 +260,16 @@
         colorInput.value = colorName;
         colorInput.classList.add(`color-${colorName}`);
         colorInput.id = "var-" +colorName;
-        div.appendChild(colorInput);
+        colorDiv.appendChild(colorInput);
 
         let colorLabel = document.createElement("label");
         colorLabel.htmlFor = "var-" + colorName; // Associate label with input via 'for' attribute
         colorLabel.classList.add('color-label');
         colorLabel.classList.add(`color-${colorName}`); // Add a class for styling
         colorLabel.innerText = colorName;
-        div.appendChild(colorLabel);
+        colorDiv.appendChild(colorLabel);
+        div.appendChild(colorDiv);
+
 
         console.log(colorInput);
       }
