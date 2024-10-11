@@ -5,9 +5,14 @@
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
         <div class="grid-item">
-          <a href="javascript:void(0);" class="product-link {{ product.handle }}" data-handle="{{ product.handle }}" data-id="{{ product.id }}">
+          <a
+            href="javascript:void(0);"
+            class="product-link {{ product.handle }}"
+            data-handle="{{ product.handle }}"
+            data-id="{{ product.id }}"
+          >
             <span class="plus-icon">
-              <img src="{{ 'plus-icon.svg' | asset_url }}" height="22px" width="22px" />
+              <img src="{{ 'plus-icon.svg' | asset_url }}" height="22px" width="22px">
             </span>
             <img src="{{ product | image_url: width: 500 }}" alt="{{ product.title }}">
           </a>
@@ -22,17 +27,7 @@
   <div class="modal-content">
     <span class="close-button">&times;</span>
     <div class="modal-body">
-      <div id="modal-product-info">
-        <div class="lhs">
-          <div id="product-pic">
-          </div>
-        </div>
-        <div class="rhs">
-          <div id="product-title"></div>
-          <div id="product-price"></div>
-          <div id="product-description"></div>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>
@@ -67,121 +62,147 @@
 
 <!-- Styles for the Featured Products Grid -->
 <style>
-.featured-products-grid {
+  .featured-products-grid {
     padding: 10px 50px;
     margin-top: 90px;
-}
-.featured-products-grid .grid {
+  }
+  .featured-products-grid .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
-}
-.featured-products-grid .product-link {
+  }
+  .featured-products-grid .product-link {
     width: 100%;
     height: 100%;
     display: block;
     aspect-ratio: 1/1;
-}
-.featured-products-grid .grid-item img {
+  }
+  .featured-products-grid .grid-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-.product-link {
-  position: relative;
-  cursor: initial;
-}
-.plus-icon img {
-  max-width: 10px;
-  max-height: 10px;
-}
-.plus-icon {
-  display: block;
-  background: #f8f8f8;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 22px;
-  height: 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.black-leather-bag .plus-icon {
-  top: 54%;
-  left: 60%;
-}
-.classic-leather-jacket .plus-icon {
-  top: 16%;
-  left: 70%;
-}
-.blue-silk-tuxedo .plus-icon {
-  top: 50%;
-  left: 83%;
-}
-.classic-varsity-top .plus-icon {
-  top: 25%;
-  left: 50%;
-}
-.chequered-red-shirt .plus-icon {
-  top: 19%;
-  left: 60%;
-}
-.dark-denim-top .plus-icon {
-  top: 38%;
-  left: 75%;
-}
+  }
+  .product-link {
+    position: relative;
+    cursor: initial;
+  }
+  .plus-icon img {
+    max-width: 10px;
+    max-height: 10px;
+  }
+  .plus-icon {
+    display: block;
+    background: #f8f8f8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .black-leather-bag .plus-icon {
+    top: 54%;
+    left: 60%;
+  }
+  .classic-leather-jacket .plus-icon {
+    top: 16%;
+    left: 70%;
+  }
+  .blue-silk-tuxedo .plus-icon {
+    top: 50%;
+    left: 83%;
+  }
+  .classic-varsity-top .plus-icon {
+    top: 25%;
+    left: 50%;
+  }
+  .chequered-red-shirt .plus-icon {
+    top: 19%;
+    left: 60%;
+  }
+  .dark-denim-top .plus-icon {
+    top: 38%;
+    left: 75%;
+  }
 </style>
 
 <!-- Scripts for the Featured Products Grid -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var modal = document.getElementById('product-modal');
-  var modalContent = modal.querySelector('.modal-body');
-  var closeButton = modal.querySelector('.close-button');
-  var productLinks = document.querySelectorAll('.featured-products-grid .plus-icon');
+  document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('product-modal');
+    var modalBody = modal.querySelector('.modal-body');
+    var closeButton = modal.querySelector('.close-button');
+    var productLinks = document.querySelectorAll('.featured-products-grid .plus-icon');
 
-  productLinks.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      var handle = this.parentElement.getAttribute('data-handle');
+    productLinks.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        var handle = this.parentElement.getAttribute('data-handle');
 
-      fetch('/products/' + handle + '.js')
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(data) {
-          showPopUp(data);
-        });
+        fetch('/products/' + handle + '.js')
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            showPopUp(data);
+          });
+      });
+    });
+
+    function showPopUp(data) {
+      let modalContent = document.createElement("div");
+      modalContent.id = "modal-product-info";
+
+      let lhs = document.createElement("div");
+      lhs.classList.add("lhs")
+
+      let rhs = document.createElement("div");
+      rhs.classList.add("rhs")
+
+      let productPic = document.createElement("div");
+      productPic.id = "product-pic";
+
+      let productTitle = document.createElement("div");
+      productTitle.id = "product-title"
+
+      let productPrice = document.createElement("div");
+      productPrice.id = "product-price";
+
+      let productDescription = document.createElement("div");
+      productDescription.id = 'product-description";
+
+      lhs.appendChild(productPic);
+
+      rhs.appendChild(productTitle);
+      rhs.appendChild(productPrice);
+      rhs.appendChild(productDescription);
+
+      modalContent.appendChild(lhs);
+      modalContent.appendChild(rhs);
+      modalBody.appendChild(modalContent);
+
+      productPic.innerHTML = data.featured_image;
+      productPrice.innerHTML = data.title;
+      productPrice.innerHTML = data.price;
+      productDescription.innerHTML = data.description;
+
+      modal.style.display = "block";
+    }
+
+    closeButton.addEventListener('click', function() {
+      modal.style.display = 'none';
+      modalContent.innerHTML = '';
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+        modalContent.innerHTML = ''
+      }
     });
   });
-
-  function showPopUp(data) {
-    let productPic = document.getElementById("product-pic");
-    let title = document.getElementById("product-title");
-    let price = document.getElementById("product-price");
-    let description = document.getElementById("product-description");
-
-    title.innerHTML = data.title;
-    price.innerHTML = data.price;
-    description.innerHTML = data.description;
-    productPic.innerHTML = data.featured_image;
-
-    modal.style.display = "block";
-  }
-
-  closeButton.addEventListener('click', function() {
-    modal.style.display = 'none';
-    modalContent.innerHTML = '';
-  });
-
-  window.addEventListener('click', function(event) {
-    if (event.target == modal) {
-      modal.style.display = 'none';
-      modalContent.innerHTML = ''
-    }
-  });
-});
 </script>
