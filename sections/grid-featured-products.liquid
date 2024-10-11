@@ -5,7 +5,7 @@
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
         <div class="grid-item">
-          <a href="javascript:void(0);" class="product-link" data-handle="{{ product.handle }}" data-id="{{ product.id }}">
+          <a href="javascript:void(0);" class="product-link {{ product.handle }}" data-handle="{{ product.handle }}" data-id="{{ product.id }}">
             <img src="{{ product | image_url: width: 500 }}" alt="{{ product.title }}">
           </a>
         </div>
