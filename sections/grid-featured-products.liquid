@@ -233,7 +233,7 @@
       let colorsData = getColors(productVariations);
       let sizesData = getSizes(productVariations)
 
-      addColorInputs(colorsData);
+      addColorInputs(colorsData, colorVariations);
 
       modal.style.display = 'flex';
       console.log(data);
@@ -248,14 +248,14 @@
       }
     }
 
-    function addColorInputs(colors) {
+    function addColorInputs(colors, div) {
       for(color of colors.values) {
         let colorInput = document.createElement("input");
         let colorName = color.toLowerCase();
         colorInput.type = "radio";
         colorInput.value = colorName;
         colorInput.classList.add(`color-${colorName}`);
-        colorVariations.appendChild(colorInput);
+        div.appendChild(colorInput);
         console.log(colorInput);
       }
     }
