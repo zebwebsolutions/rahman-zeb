@@ -250,6 +250,7 @@
     }
 
     function addColorInputs(colors, div) {
+      //add color input field
       for(let color of colors.values) {
         let colorDiv = document.createElement("div");
         colorDiv.classList.add("color-variant");
@@ -261,7 +262,8 @@
         colorInput.classList.add(`color-${colorName}`);
         colorInput.id = "var-" +colorName;
         colorDiv.appendChild(colorInput);
-
+        
+        //adding label for color input
         let colorLabel = document.createElement("label");
         colorLabel.htmlFor = "var-" + colorName; // Associate label with input via 'for' attribute
         colorLabel.classList.add('color-label');
