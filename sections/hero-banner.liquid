@@ -1,5 +1,5 @@
 <!-- Hero Banner Section -->
-<div class="hero-banner" background=url({{ 'banner-bg.svg' | asset_url }})>
+<div class="hero-banner">
   <!-- Header -->
   <div class="hero-banner__header">
     <div class="header-logo">
@@ -21,14 +21,17 @@
 
   <!-- Content Area -->
   <div class="content-area">
-    <div class="hero-banner__content">
-      <h2>{{ section.settings.content_title }}</h2>
-      <p>{{ section.settings.content_description }}</p>
-      {% if section.settings.content_button_text != blank and section.settings.content_button_link != blank %}
-        <a href="{{ section.settings.content_button_link }}" class="hero-banner__content-button">
-          {{ section.settings.content_button_text }}
-        </a>
-      {% endif %}
+    <div class="hero-banner__bg">&nbsp;</div>
+    <div class="hero-banner__bg-wrapper">
+      <div class="hero-banner__content">
+        <h2>{{ section.settings.content_title }}</h2>
+        <p>{{ section.settings.content_description }}</p>
+        {% if section.settings.content_button_text != blank and section.settings.content_button_link != blank %}
+          <a href="{{ section.settings.content_button_link }}" class="hero-banner__content-button">
+            {{ section.settings.content_button_text }}
+          </a>
+        {% endif %}
+      </div>
     </div>
   </div>
 
@@ -123,5 +126,36 @@
     background: #fff544;
     text-decoration: none;
     padding: 12px 40px;
+  }
+  .hero-banner__content {
+    max-width: 520px;
+    background: #fff;
+    padding: 10px 50px;
+    padding-bottom: 40px;
+  }
+  .hero-banner__content h2 {
+    font-size: 70px;
+    line-height: 70px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 50px;
+  }
+  .hero-banner__content p {
+    margin: 0;
+    margin-bottom: 50px;
+  }
+  .hero-banner__content-button {
+    background: #000;
+    padding: 12px 40px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .hero-banner__footer {
+    background: #f5f5f5;
+    padding: 10px 50px;
+    text-align: center;
+  }
+  .hero-banner__footer * {
+    margin: 0;
   }
 </style>
