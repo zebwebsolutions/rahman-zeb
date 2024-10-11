@@ -6,7 +6,7 @@
       {% if product %}
         <div class="grid-item">
           <a href="javascript:void(0);" class="product-link" data-handle="{{ product.handle }}" data-id="{{ product.id }}">
-            <img src="{{ product | img_url: 'medium' }}" alt="{{ product.title }}">
+            <img src="{{ product | image_url: width: 500 }}" alt="{{ product.title }}">
           </a>
         </div>
       {% endif %}
