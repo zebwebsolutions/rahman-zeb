@@ -251,10 +251,10 @@
     function addColorInputs(colors) {
       for(color of colors.values) {
         let colorInput = document.createElement("input");
-        let color = color.toLowerCase();
+        let colorName = color.toLowerCase();
         colorInput.type = "radio";
-        colorInput.value = color;
-        colorInput.classList.add(`color-${color}`);
+        colorInput.value = colorName;
+        colorInput.classList.add(`color-${colorName}`);
         colorVariations.appendChild(colorInput);
         console.log(colorInput);
       }
