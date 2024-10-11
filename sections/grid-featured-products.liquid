@@ -22,12 +22,15 @@
   <div class="modal-content">
     <span class="close-button">&times;</span>
     <div class="modal-body">
-      <div class="product-info">
+      <div id="modal-product-info">
         <div class="lhs">
-
+          <div id="product-pic">
+          </div>
         </div>
         <div class="rhs">
-
+          <div id="product-title"></div>
+          <div id="product-price"></div>
+          <div id="product-description"></div>
         </div>
       </div>
     </div>
@@ -156,8 +159,16 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function showPopUp(data) {
-    console.log(data);
-    modal.innerHTML = data;
+    let productPic = document.getElementById("product-pic");
+    let title = document.getElementById("product-title");
+    let price = document.getElementById("product-price");
+    let description = document.getElementById("product-description");
+
+    title.innerHTML = data.title;
+    price.innerHTML = data.price;
+    description.innerHTML = data.description;
+    productPic.innerHTML = data.featured_image;
+
     modal.style.display = "block";
   }
 
