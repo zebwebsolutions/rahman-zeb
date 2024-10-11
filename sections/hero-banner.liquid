@@ -2,17 +2,21 @@
 <div class="hero-banner">
   <!-- Header -->
   <div class="hero-banner__header">
+    <div class="header-logo">
     {% if section.settings.header_logo != blank %}
       <img src="{{ section.settings.header_logo | img_url: 'medium' }}" alt="Logo" class="hero-banner__logo">
     {% endif %}
+    </div>
     <div class="hero-banner__header-text">
       <h1>{{ section.settings.header_text }}</h1>
     </div>
+    <div class="header-cta">
     {% if section.settings.header_button_text != blank and section.settings.header_button_link != blank %}
       <a href="{{ section.settings.header_button_link }}" class="hero-banner__header-button">
         {{ section.settings.header_button_text }}
       </a>
     {% endif %}
+    </div>
   </div>
 
   <!-- Content Area -->
