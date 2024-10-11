@@ -264,6 +264,7 @@
         colorLabel.htmlFor = "var-" + colorName; // Associate label with input via 'for' attribute
         colorLabel.classList.add('color-label');
         colorLabel.classList.add(`color-${colorName}`); // Add a class for styling
+        colorLabel.innerText = colorName;
         div.appendChild(colorLabel);
 
         console.log(colorInput);
