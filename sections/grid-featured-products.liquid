@@ -138,19 +138,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var modal = document.getElementById('product-modal');
   var modalContent = modal.querySelector('.modal-body');
   var closeButton = modal.querySelector('.close-button');
-  var productLinks = document.querySelectorAll('.featured-products-grid .product-link');
+  var productLinks = document.querySelectorAll('.featured-products-grid .plus-icon');
 
   productLinks.forEach(function(link) {
     link.addEventListener('click', function(event) {
       event.preventDefault();
-      var handle = this.getAttribute('data-handle');
+      var handle = this.parentElement.getAttribute('data-handle');
 
-      fetch('/products/' + handle + '?view=modal')
+      fetch('/products/' + handle + '.js')
         .then(function(response) {
           return response.text();
         })
-        .then(function(html) {
-          modalContent.innerHTML = html;
+        .then(function(data) {
+          modalContent.innerHTML = data;
           modal.style.display = 'block';
         });
     });
