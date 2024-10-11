@@ -161,6 +161,58 @@
     color: #000;
     font-size: 20px;
   }
+
+  /* Color Variations */
+  .color-variations {
+    display: flex;
+  }
+  .color-variant {
+    flex: 1;
+  }
+  .color-variant input[type='radio'] {
+    display: none;
+  }
+  .color-variant label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 9.19px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .color-variant:first-child label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: -1;
+    transition: all 0.2s ease-in-out;
+  }
+  .color-variant:last-child label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: -1;
+    transition: all 0.2s ease-in-out;
+  }
+  .color-variant:first-child input[type='radio']:checked + label:after {
+    right: 0;
+  }
+  .color-variant:last-child input[type='radio']:checked + label:after {
+    left: 0;
+  }
+  .color-variant input[type='radio']:checked + label {
+    color: #fff;
+  }
 </style>
 
 <!-- Scripts for the Featured Products Grid -->
@@ -232,7 +284,7 @@
       let productVariations = data.options;
 
       let colorsData = getColors(productVariations);
-      let sizesData = getSizes(productVariations)
+      let sizesData = getSizes(productVariations);
 
       addColorInputs(colorsData, colorVariations);
 
@@ -241,9 +293,9 @@
     }
 
     function getColors(variations) {
-      for(let i=0; i<variations.length; i++) {
-        if(variations[i].name.toLowerCase() === 'color') {
-          console.log("colors data", variations[i]);
+      for (let i = 0; i < variations.length; i++) {
+        if (variations[i].name.toLowerCase() === 'color') {
+          console.log('colors data', variations[i]);
           return variations[i];
         }
       }
@@ -251,36 +303,35 @@
 
     function addColorInputs(colors, div) {
       //add color input field
-      for(let color of colors.values) {
-        let colorDiv = document.createElement("div");
-        colorDiv.classList.add("color-variant");
-        let colorInput = document.createElement("input");
+      for (let color of colors.values) {
+        let colorDiv = document.createElement('div');
+        colorDiv.classList.add('color-variant');
+        let colorInput = document.createElement('input');
         let colorName = color.toLowerCase();
-        colorInput.type = "radio";
-        colorInput.name = "product-color";
+        colorInput.type = 'radio';
+        colorInput.name = 'product-color';
         colorInput.value = colorName;
         colorInput.classList.add(`color-${colorName}`);
-        colorInput.id = "var-" +colorName;
+        colorInput.id = 'var-' + colorName;
         colorDiv.appendChild(colorInput);
-        
+
         //adding label for color input
-        let colorLabel = document.createElement("label");
-        colorLabel.htmlFor = "var-" + colorName; // Associate label with input via 'for' attribute
+        let colorLabel = document.createElement('label');
+        colorLabel.htmlFor = 'var-' + colorName; // Associate label with input via 'for' attribute
         colorLabel.classList.add('color-label');
         colorLabel.classList.add(`color-${colorName}`); // Add a class for styling
         colorLabel.innerText = colorName;
         colorDiv.appendChild(colorLabel);
         div.appendChild(colorDiv);
 
-
         console.log(colorInput);
       }
     }
 
     function getSizes(variations) {
-      for(let i=0; i<variations.length; i++) {
-        if(variations[i].name.toLowerCase() === 'size') {
-          console.log("sizes data", variations[i]);
+      for (let i = 0; i < variations.length; i++) {
+        if (variations[i].name.toLowerCase() === 'size') {
+          console.log('sizes data', variations[i]);
           return variations[i];
         }
       }
