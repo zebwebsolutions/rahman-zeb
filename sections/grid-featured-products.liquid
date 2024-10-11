@@ -181,6 +181,7 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
+    border: 1px solid #000;
   }
   .color-variant:first-child label:after {
     content: '';
@@ -321,6 +322,7 @@
         colorLabel.classList.add('color-label');
         colorLabel.classList.add(`color-${colorName}`); // Add a class for styling
         colorLabel.innerText = colorName;
+        colorLabel.style.borderLeft = "5px solid " + colorName;
         colorDiv.appendChild(colorLabel);
         div.appendChild(colorDiv);
 
