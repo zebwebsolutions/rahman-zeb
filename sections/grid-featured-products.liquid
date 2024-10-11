@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       fetch('/products/' + handle + '.js')
         .then(function(response) {
-          return response.text();
+          return response.json();
         })
         .then(function(data) {
           showPopUp(data);
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function showPopUp(data) {
     console.log(data);
-    modal.innerHTML = data.json();
+    modal.innerHTML = data;
     modal.style.display = "block";
   }
 
