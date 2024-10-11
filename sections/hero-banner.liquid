@@ -1,33 +1,35 @@
 <!-- Hero Banner Section -->
-<div class="hero-banner">
+<div class="hero-banner" background=url({{ 'banner-bg.svg' | | asset_url }})>
   <!-- Header -->
   <div class="hero-banner__header">
     <div class="header-logo">
-    {% if section.settings.header_logo != blank %}
-      <img src="{{ section.settings.header_logo | img_url: 'medium' }}" alt="Logo" class="hero-banner__logo">
-    {% endif %}
+      {% if section.settings.header_logo != blank %}
+        <img src="{{ section.settings.header_logo | img_url: 'medium' }}" alt="Logo" class="hero-banner__logo">
+      {% endif %}
     </div>
     <div class="hero-banner__header-text">
       <h1>{{ section.settings.header_text }}</h1>
     </div>
     <div class="header-cta">
-    {% if section.settings.header_button_text != blank and section.settings.header_button_link != blank %}
-      <a href="{{ section.settings.header_button_link }}" class="hero-banner__header-button">
-        {{ section.settings.header_button_text }}
-      </a>
-    {% endif %}
+      {% if section.settings.header_button_text != blank and section.settings.header_button_link != blank %}
+        <a href="{{ section.settings.header_button_link }}" class="hero-banner__header-button">
+          {{ section.settings.header_button_text }}
+        </a>
+      {% endif %}
     </div>
   </div>
 
   <!-- Content Area -->
-  <div class="hero-banner__content">
-    <h2>{{ section.settings.content_title }}</h2>
-    <p>{{ section.settings.content_description }}</p>
-    {% if section.settings.content_button_text != blank and section.settings.content_button_link != blank %}
-      <a href="{{ section.settings.content_button_link }}" class="hero-banner__content-button">
-        {{ section.settings.content_button_text }}
-      </a>
-    {% endif %}
+  <div class="content-area">
+    <div class="hero-banner__content">
+      <h2>{{ section.settings.content_title }}</h2>
+      <p>{{ section.settings.content_description }}</p>
+      {% if section.settings.content_button_text != blank and section.settings.content_button_link != blank %}
+        <a href="{{ section.settings.content_button_link }}" class="hero-banner__content-button">
+          {{ section.settings.content_button_text }}
+        </a>
+      {% endif %}
+    </div>
   </div>
 
   <!-- Footer -->
@@ -104,45 +106,22 @@
 
 <!-- Styles for the Hero Banner -->
 <style>
-.hero-banner {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.hero-banner__header,
-.hero-banner__content,
-.hero-banner__footer {
-  margin-bottom: 30px;
-}
-
-.hero-banner__logo {
-  max-width: 150px;
-  margin-bottom: 20px;
-}
-
-.hero-banner__header-text h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-.hero-banner__header-button,
-.hero-banner__content-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #5a67d8;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 15px;
-}
-
-.hero-banner__content h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.hero-banner__footer p {
-  font-size: 1em;
-  color: #718096;
-}
+  .hero-banner__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 10px 50px;
+  }
+  .hero-banner__header-text * {
+    font-size: 16px;
+  }
+  .header-logo img {
+    vertical-align: middle;
+  }
+  .header-cta a {
+    background: #fff544;
+    text-decoration: none;
+    padding: 12px 40px;
+  }
 </style>
