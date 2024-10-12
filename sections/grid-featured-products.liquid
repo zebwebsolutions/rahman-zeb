@@ -261,12 +261,12 @@
     let modalBody = modal.querySelector('.modal-body');
     let closeButton = modal.querySelector('.close-button');
     let productLinks = document.querySelectorAll('.featured-products-grid .plus-icon');
-
+  
     productLinks.forEach(function (link) {
       link.addEventListener('click', function (event) {
         event.preventDefault();
         var handle = this.parentElement.getAttribute('data-handle');
-
+  
         fetch('/products/' + handle + '.js')
           .then((response) => {
             return response.json();
@@ -276,70 +276,97 @@
           });
       });
     });
-
+  
     function showPopUp(data) {
       let modalContent = document.createElement('div');
       modalContent.id = 'modal-product-info';
-
+  
       let lhs = document.createElement('div');
       lhs.classList.add('lhs');
-
+  
       let rhs = document.createElement('div');
       rhs.classList.add('rhs');
-
+  
       let productPic = document.createElement('div');
       productPic.id = 'product-pic';
       let productImg = document.createElement('img');
-
+  
       let productTitle = document.createElement('div');
       productTitle.id = 'product-title';
-
+  
       let productPrice = document.createElement('div');
       productPrice.id = 'product-price';
-
+  
       let productDescription = document.createElement('div');
       productDescription.id = 'product-description';
-
+  
       let colorVariations = document.createElement('div');
       colorVariations.classList.add('color-variations');
-
+  
       let sizeVariations = document.createElement('div');
       sizeVariations.classList.add('size-variations');
+  
+      // Create selectedSize element
       let selectedSize = document.createElement('div');
       selectedSize.id = 'selectedSize';
       selectedSize.innerText = 'Choose your size';
       sizeVariations.appendChild(selectedSize);
-
+  
       productPic.appendChild(productImg);
       lhs.appendChild(productPic);
-
+  
       rhs.appendChild(productTitle);
       rhs.appendChild(productPrice);
       rhs.appendChild(productDescription);
-
+  
       modalContent.appendChild(lhs);
       modalContent.appendChild(rhs);
       modalBody.appendChild(modalContent);
       modalBody.appendChild(colorVariations);
       modalBody.appendChild(sizeVariations);
-
+  
       productImg.src = data.featured_image;
       productTitle.innerHTML = data.title;
-      productPrice.innerHTML = data.price;
+      productPrice.innerHTML = Shopify.formatMoney(data.price);
       productDescription.innerHTML = data.description;
-
+  
       let productVariations = data.options;
-
+  
       let colorsData = getColors(productVariations);
       let sizesData = getSizes(productVariations);
-
+  
       addColorInputs(colorsData, colorVariations);
       addSizeDropDown(sizesData, sizeVariations);
-
+  
+      // Now that sizesList is in the DOM, we can attach event listeners
+      let sizesMenu = document.getElementById("sizesList");
+      let showDropDown = false;
+  
+      // Toggle dropdown visibility when selectedSize is clicked
+      selectedSize.addEventListener("click", function() {
+        if (showDropDown) {
+          sizesMenu.style.display = "none";
+          showDropDown = false;
+        } else {
+          sizesMenu.style.display = "block";
+          showDropDown = true;
+        }
+      });
+  
+      // Update selectedSize text when a size is selected
+      let sizesListItems = sizesMenu.querySelectorAll("li");
+      sizesListItems.forEach((sizeItem) => {
+        sizeItem.addEventListener("click", function() {
+          selectedSize.innerText = this.innerText;
+          sizesMenu.style.display = "none";
+          showDropDown = false;
+        });
+      });
+  
       modal.style.display = 'flex';
       console.log(data);
     }
-
+  
     function getColors(variations) {
       for (let i = 0; i < variations.length; i++) {
         if (variations[i].name.toLowerCase() === 'color') {
@@ -348,7 +375,7 @@
         }
       }
     }
-
+  
     function addColorInputs(colors, div) {
       //add color input field
       for (let color of colors.values) {
@@ -362,7 +389,7 @@
         colorInput.classList.add(`color-${colorName}`);
         colorInput.id = 'var-' + colorName;
         colorDiv.appendChild(colorInput);
-
+  
         //adding label for color input
         let colorLabel = document.createElement('label');
         colorLabel.htmlFor = 'var-' + colorName; // Associate label with input via 'for' attribute
@@ -372,11 +399,11 @@
         colorLabel.style.borderLeft = '5px solid ' + colorName;
         colorDiv.appendChild(colorLabel);
         div.appendChild(colorDiv);
-
+  
         console.log(colorInput);
       }
     }
-
+  
     function getSizes(variations) {
       for (let i = 0; i < variations.length; i++) {
         if (variations[i].name.toLowerCase() === 'size') {
@@ -385,45 +412,27 @@
         }
       }
     }
-
+  
     function addSizeDropDown(sizes, div) {
       let sizesList = document.createElement('ul');
       sizesList.id = 'sizesList';
-      for (size of sizes.values) {
+      sizesList.style.display = 'none'; // Hide dropdown initially
+  
+      for (let size of sizes.values) {
         let sizeItem = document.createElement('li');
         sizeItem.innerText = size;
-        sizeItem.classList.add = 'sizeItem';
+        sizeItem.classList.add('sizeItem');
         sizesList.append(sizeItem);
       }
       div.appendChild(sizesList);
       console.log(div);
     }
-
-    let selectedSize = document.getElementById("selectedSize");
-    let showDropDown = false;
-    let sizesMenu = document.getElementById("sizesList");
-    selectedSize.addEventListener("click", function() {
-        if(!showDropDown) {
-            sizesMenu.style.display = "none";
-            showDropDown = !showDropDown;
-        } else {
-            sizesMenu.style.display = "block";
-            showDropDown = !showDropDown;
-        }
-    })
-    let sizesList = document.querySelectorAll("#sizesList li");
-    sizesList.forEach((size) => {
-        size.addEventListener("click", function() {
-            console.log(size);
-            selectedSize.innerText = this.innerText;
-        })
-    });
-
+  
     closeButton.addEventListener('click', function () {
       modal.style.display = 'none';
       modalBody.innerHTML = '';
     });
-
+  
     window.addEventListener('click', function (event) {
       if (event.target == modal) {
         modal.style.display = 'none';
