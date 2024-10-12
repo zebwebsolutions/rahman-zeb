@@ -327,7 +327,7 @@
   
       productImg.src = data.featured_image;
       productTitle.innerHTML = data.title;
-      productPrice.innerHTML = Shopify.formatMoney(data.price);
+      productPrice.innerHTML = (data.price / 100).toLocaleString("de-DE", {style: "currency", currency: "EUR"} );
       productDescription.innerHTML = data.description;
   
       let productVariations = data.options;
