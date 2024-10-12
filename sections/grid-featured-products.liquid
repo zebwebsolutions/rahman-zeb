@@ -305,12 +305,17 @@
   
       let sizeVariations = document.createElement('div');
       sizeVariations.classList.add('size-variations');
+      sizeVariations.innerText = "Size";
   
       // Create selectedSize element
       let selectedSize = document.createElement('div');
       selectedSize.id = 'selectedSize';
       selectedSize.innerText = 'Choose your size';
       sizeVariations.appendChild(selectedSize);
+      let sizeWrapper = document.createElement('div');
+      sizeWrapper.id = "sizeDropDownWrap";
+      sizeWrapper.appendChild(selectedSize);
+      sizeWrapper.appendChild(sizeVariations); 
   
       productPic.appendChild(productImg);
       lhs.appendChild(productPic);
