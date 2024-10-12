@@ -230,10 +230,10 @@
         var handle = this.parentElement.getAttribute('data-handle');
 
         fetch('/products/' + handle + '.js')
-          .then(function (response) {
+          .then((response) => {
             return response.json();
           })
-          .then(function (data) {
+          .then((data) => {
             showPopUp(data);
           });
       });
@@ -265,6 +265,9 @@
       let colorVariations = document.createElement('div');
       colorVariations.classList.add('color-variations');
 
+      let sizeVariations = document.createElement('div');
+      sizeVariations.classList.add('size-variations');
+
       productPic.appendChild(productImg);
       lhs.appendChild(productPic);
 
@@ -288,6 +291,7 @@
       let sizesData = getSizes(productVariations);
 
       addColorInputs(colorsData, colorVariations);
+      addSizeDropDown(sizesData, sizeVariations);
 
       modal.style.display = 'flex';
       console.log(data);
@@ -336,6 +340,12 @@
           console.log('sizes data', variations[i]);
           return variations[i];
         }
+      }
+    }
+
+    function addSizeDropDown(sizes, div) {
+      for(size of sizes) {
+        console.log(size); 
       }
     }
 
