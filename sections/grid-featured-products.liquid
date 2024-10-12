@@ -305,7 +305,9 @@
   
       let sizeVariations = document.createElement('div');
       sizeVariations.classList.add('size-variations');
-      sizeVariations.innerText = "Size";
+      let sizeLabel = document.createElement('div');
+      sizeLabel.classList.add('size-label-text');
+      sizeVariations.appendChild(sizeLabel);
   
       // Create selectedSize element
       let selectedSize = document.createElement('div');
