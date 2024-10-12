@@ -214,6 +214,44 @@
   .color-variant input[type='radio']:checked + label {
     color: #fff;
   }
+  div#selectedSize {
+    border: 1px solid #000;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 13px;
+    margin-top: 6px;
+    position: relative;
+  }
+  ul#sizesList {
+    border: 1px solid #000;
+    border-top: unset;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 0;
+  }
+  #selectedSize:after {
+    content: '>';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    text-align: center;
+  }
+  #selectedSize:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50px;
+    width: 1px;
+    height: 100%;
+    background: #000;
+  }
+  #sizesList li:hover {
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+  }
 </style>
 
 <!-- Scripts for the Featured Products Grid -->
@@ -267,9 +305,9 @@
 
       let sizeVariations = document.createElement('div');
       sizeVariations.classList.add('size-variations');
-      let selectedSize = document.createElement("div");
-      selectedSize.id = "selectedSize";
-      selectedSize.innerText = "Choose your size";
+      let selectedSize = document.createElement('div');
+      selectedSize.id = 'selectedSize';
+      selectedSize.innerText = 'Choose your size';
       sizeVariations.appendChild(selectedSize);
 
       productPic.appendChild(productImg);
@@ -331,7 +369,7 @@
         colorLabel.classList.add('color-label');
         colorLabel.classList.add(`color-${colorName}`); // Add a class for styling
         colorLabel.innerText = colorName;
-        colorLabel.style.borderLeft = "5px solid " + colorName;
+        colorLabel.style.borderLeft = '5px solid ' + colorName;
         colorDiv.appendChild(colorLabel);
         div.appendChild(colorDiv);
 
@@ -349,12 +387,12 @@
     }
 
     function addSizeDropDown(sizes, div) {
-      let sizesList = document.createElement("ul");
-      sizesList.id = "sizesList";
-      for(size of sizes.values) {
-        let sizeItem = document.createElement("li");
+      let sizesList = document.createElement('ul');
+      sizesList.id = 'sizesList';
+      for (size of sizes.values) {
+        let sizeItem = document.createElement('li');
         sizeItem.innerText = size;
-        sizeItem.classList.add = "sizeItem";
+        sizeItem.classList.add = 'sizeItem';
         sizesList.append(sizeItem);
       }
       div.appendChild(sizesList);
