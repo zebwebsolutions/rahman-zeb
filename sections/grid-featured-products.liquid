@@ -302,11 +302,16 @@
   
       let colorVariations = document.createElement('div');
       colorVariations.classList.add('color-variations');
+      let colorLabel = document.createElement('div');
+      colorLabel.classList.add('color-label-text');
+      colorLabel.innerText = "Color";
+      colorVariations.appendChild(colorLabel);
   
       let sizeVariations = document.createElement('div');
       sizeVariations.classList.add('size-variations');
       let sizeLabel = document.createElement('div');
       sizeLabel.classList.add('size-label-text');
+      sizeLabel.innerText = "Size";
       sizeVariations.appendChild(sizeLabel);
   
       // Create selectedSize element
@@ -314,9 +319,9 @@
       selectedSize.id = 'selectedSize';
       selectedSize.innerText = 'Choose your size';
       sizeVariations.appendChild(selectedSize);
+
       let sizeWrapper = document.createElement('div');
       sizeWrapper.id = "sizeDropDownWrap";
-      sizeWrapper.appendChild(selectedSize);
       sizeWrapper.appendChild(sizeVariations); 
   
       productPic.appendChild(productImg);
