@@ -345,9 +345,13 @@
 
     function addSizeDropDown(sizes, div) {
       console.log("addSizesDropdown", sizes.values);
+      let sizesList = document.createElement("ul");
       for(size of sizes.values) {
-        console.log(size); 
+        let sizeItem = document.createElement("li");
+        sizeItem.innerText = size;
+        sizesList.append(sizeItem);
       }
+      div.appendChild(sizesList);
     }
 
     closeButton.addEventListener('click', function () {
