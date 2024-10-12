@@ -267,6 +267,9 @@
 
       let sizeVariations = document.createElement('div');
       sizeVariations.classList.add('size-variations');
+      let selectedSize = document.createElment("div");
+      selectedSize.id = "selectedSize";
+      sizeVariations.appendChild(sizeVariations);
 
       productPic.appendChild(productImg);
       lhs.appendChild(productPic);
@@ -279,6 +282,7 @@
       modalContent.appendChild(rhs);
       modalBody.appendChild(modalContent);
       modalBody.appendChild(colorVariations);
+      modalBody.appendChild(sizeVariations);
 
       productImg.src = data.featured_image;
       productTitle.innerHTML = data.title;
@@ -344,11 +348,12 @@
     }
 
     function addSizeDropDown(sizes, div) {
-      console.log("addSizesDropdown", sizes.values);
       let sizesList = document.createElement("ul");
+      sizesList.id = "sizesList";
       for(size of sizes.values) {
         let sizeItem = document.createElement("li");
         sizeItem.innerText = size;
+        sizeItem.classList.add = "sizeItem";
         sizesList.append(sizeItem);
       }
       div.appendChild(sizesList);
