@@ -14,7 +14,7 @@
       {% if section.settings.header_button_text != blank and section.settings.header_button_link != blank %}
         <a href="{{ section.settings.header_button_link }}" class="hero-banner__header-button">
           {{ section.settings.header_button_text }}
-          <img src="{{ 'right-arrow-black.svg' | asset_url }}" />
+          <span class="right-arrow">&#10230;</span>
         </a>
       {% endif %}
     </div>
@@ -30,7 +30,7 @@
         {% if section.settings.content_button_text != blank and section.settings.content_button_link != blank %}
           <a href="{{ section.settings.content_button_link }}" class="hero-banner__content-button">
             {{ section.settings.content_button_text }}
-            <span class="right-arrow">&rarr;</span>
+            <span class="right-arrow">&#10230;</span>
           </a>
         {% endif %}
       </div>
