@@ -399,6 +399,26 @@
       console.log(div);
     }
 
+    let selectedSize = document.getElementById("selectedSize");
+    let showDropDown = false;
+    let sizesMenu = document.getElementById("sizesList");
+    selectedSize.addEventListener("click", function() {
+        if(!showDropDown) {
+            sizesMenu.style.display = "none";
+            showDropDown = !showDropDown;
+        } else {
+            sizesMenu.style.display = "block";
+            showDropDown = !showDropDown;
+        }
+    })
+    let sizesList = document.querySelectorAll("#sizesList li");
+    sizesList.forEach((size) => {
+        size.addEventListener("click", function() {
+            console.log(size);
+            selectedSize.innerText = this.innerText;
+        })
+    });
+
     closeButton.addEventListener('click', function () {
       modal.style.display = 'none';
       modalBody.innerHTML = '';
