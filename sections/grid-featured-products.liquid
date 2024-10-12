@@ -28,7 +28,7 @@
     <span class="close-button">&times;</span>
     <div class="modal-body"></div>
     <div class="modal-cta">
-      <a href="javascript:void(0);" class="btn">ADD TO CART <img src="{{ 'right-arrow.svg' | asset_url  }}" /></a>
+      <a href="#" class="btn">ADD TO CART <img src="{{ 'right-arrow.svg' | asset_url  }}" width="50" /></a>
     </div>
   </div>
 </div>
@@ -234,7 +234,7 @@
     margin-top: 0;
   }
   #selectedSize:after {
-    content: '{{ 'icon-caret.svg' | asset_url }}';
+    content: url({{ 'icon-caret.svg' | asset_url }});
     position: absolute;
     top: 0;
     right: 0;
