@@ -224,6 +224,10 @@
     padding-left: 13px;
     margin-top: 6px;
     position: relative;
+    cursor: pointer;
+  }
+  .size-variations {
+    position: relative;
   }
   ul#sizesList {
     border: 1px solid #000;
@@ -232,6 +236,10 @@
     padding: 0;
     text-align: center;
     margin-top: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    background: #fff;
   }
   #selectedSize:after {
     content: url({{ 'caret-icon.svg' | asset_url }});
@@ -264,6 +272,25 @@
   }
   .size-label-text {
       margin-top: 11.52px;
+  }
+  .modal-cta img {
+      max-width: 33.7px;
+      height: auto;
+      position: absolute;
+      top: 37%;
+      right: 10%;
+  }
+  .modal-cta .btn {
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      height: 45px;
+      line-height: 45px;
+      width: 100%;
+      margin-top: 51px;
+      position: relative;
   }
 </style>
 
@@ -371,9 +398,11 @@
       selectedSize.addEventListener("click", function() {
         if (showDropDown) {
           sizesMenu.style.display = "none";
+          sizesList.classList.remove("open")
           showDropDown = false;
         } else {
           sizesMenu.style.display = "block";
+          selectedSize.classList.add("open")
           showDropDown = true;
         }
       });
