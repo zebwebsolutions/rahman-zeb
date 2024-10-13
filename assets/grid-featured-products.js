@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create selectedSize element
     let selectedSize = document.createElement("div");
     selectedSize.id = "selectedSize";
+    selectedSize.setAttribute("role", "option");
     selectedSize.innerText = "Choose your size";
     sizeVariations.appendChild(selectedSize);
 
@@ -99,15 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
     addColorInputs(colorsData, colorVariations);
     addSizeDropDown(sizesData, sizeVariations);
 
-    //gets selected color value
-    let selectedColor = '';
-    document.querySelectorAll(".color-variant input").forEach((color) => {
-      if(color.checked) {
-          selectedColor = color.value;
-          console.log("selected color", selectedColor);
-      }
-    })
-
     // Now that sizesList is in the DOM, we can attach event listeners
     let sizesMenu = document.getElementById("sizesList");
     let showDropDown = false;
@@ -132,9 +124,13 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedSize.innerText = this.innerText;
         sizesMenu.style.display = "none";
         showDropDown = false;
-        findVariantId(data, selectedSize.innerText, selectedColor);
+        findVariantId(data, selectedSize.innerText);
       });
     });
+
+    document.querySelector(".color-variations").addEventListener("change", function() {
+      findVariantId(data, selectedSize.innerText)
+    })
 
     modal.style.display = "flex";
     console.log(data);
@@ -172,8 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
       colorLabel.style.borderLeft = "5px solid " + colorName;
       colorDiv.appendChild(colorLabel);
       div.appendChild(colorDiv);
-
-      console.log(colorInput);
     }
   }
 
@@ -205,6 +199,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Find variant id based on selected color & size
   function findVariantId(data, selectedSize, selectedColor) {
+    //gets selected color value
+    let selectedColor = '';
+    document.querySelectorAll(".color-variant input").forEach((color) => {
+      if(color.checked) {
+          selectedColor = color.value;
+          console.log("selected color", selectedColor);
+      }
+    })
 
     let variant = data.variants.find(variant => {
       return variant.option1 === selectedSize && variant.option2.toLowerCase() === selectedColor;
