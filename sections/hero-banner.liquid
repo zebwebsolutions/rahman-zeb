@@ -20,13 +20,45 @@
     </div>
   </div>
 
+  <div class="hero-banner__header-mobile">
+    <!-- Menu Icon (bars) for mobile -->
+    <div class="menu-icon">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  
+    <!-- Logo aligned in the center -->
+    <div class="header-logo">
+      {% if section.settings.header_logo != blank %}
+        <img src="{{ section.settings.header_logo | img_url: 'medium' }}" alt="Logo" class="hero-banner__logo">
+      {% endif %}
+    </div>
+  
+    <!-- Hidden elements for mobile, revealed when menu is clicked -->
+    <div class="hidden-elements">
+      <div class="hero-banner__header-text">
+        <h1>{{ section.settings.header_text }}</h1>
+      </div>
+      <div class="header-cta">
+        {% if section.settings.header_button_text != blank and section.settings.header_button_link != blank %}
+          <a href="{{ section.settings.header_button_link }}" class="hero-banner__header-button">
+            {{ section.settings.header_button_text }}
+            <img src="{{ 'right-arrow-black.svg' | asset_url }}">
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
   <!-- Content Area -->
   <div class="content-area">
     <div class="hero-banner__bg">&nbsp;</div>
     <div class="hero-banner__bg-wrapper">
       <div class="hero-banner__content">
         <h2>{{ section.settings.content_title }}</h2>
-        <p>{{ section.settings.content_description }}</p>
+        <p class="hide-on-mobile">{{ section.settings.content_description }}</p>
+        <p class="mobile-only">{{ section.settings.mobile_content_description }}</p>
         {% if section.settings.content_button_text != blank and section.settings.content_button_link != blank %}
           <a href="{{ section.settings.content_button_link }}" class="hero-banner__content-button">
             {{ section.settings.content_button_text }}
@@ -39,7 +71,8 @@
 
   <!-- Footer -->
   <div class="hero-banner__footer">
-    <p>{{ section.settings.footer_text }}</p>
+    <p class="hide-on-mobile">{{ section.settings.footer_text }}</p>
+    <p class="mobile-only">{{ section.settings.footer_mobile_text }}</p>
   </div>
 </div>
 
@@ -83,6 +116,12 @@
       "default": "Check out our range of products."
     },
     {
+      "type": "textarea",
+      "id": "mobile_content_description",
+      "label": "Mobile Content Description",
+      "default": "Check out our range of products."
+    },
+    {
       "type": "url",
       "id": "content_button_link",
       "label": "Content Button Link"
@@ -98,6 +137,12 @@
       "id": "footer_text",
       "label": "Footer Text",
       "default": "Thank you for visiting our store."
+    },
+    {
+      "type": "textarea",
+      "id": "footer_mobile_text",
+      "label": "Mobile Footer Text",
+      "default": "Thank you for visiting our store."
     }
   ],
   "presets": [
@@ -111,6 +156,30 @@
 
 <!-- Styles for the Hero Banner -->
 <style>
+  @font-face {
+    font-family: Jost;
+    src: url({{ 'Jost-Light.woff' | asset_url }}) format("woff2");
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Jost;
+    src: url({{ 'Jost-Regular.woff' | asset_url }}) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Jost;
+    src: url({{ 'Jost-SemiBold.woff' | asset_url }}) format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Lustria;
+    src: url({{ 'Lustria-Regular.woff' | asset_url }}) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
   .hero-banner__header {
     display: flex;
     justify-content: space-between;
