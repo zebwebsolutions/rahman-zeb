@@ -205,10 +205,9 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     let variant = data.variants.find(variant => {
-      return variant.option1 === selectedSize && variant.option2 === selectedColor;
+      return variant.option1 === selectedSize && variant.option2.toLowerCase() === selectedColor;
     });
 
-    console.log("varaint data", variant);
     for(let i=0; i<data.variants.length; i++) {
       console.log("option 1", data.variants[i].option1);
       console.log("option 2", data.variants[i].option2)
