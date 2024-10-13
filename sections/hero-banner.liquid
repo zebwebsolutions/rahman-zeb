@@ -467,3 +467,16 @@
       }
   }
 </style>
+
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    let menuIcon = document.querySelector(".hero-banner__header-mobile .menu-icon");
+    let headerContent = document.querySelector(".hero-banner__header-mobile");
+  
+    menuIcon.addEventListener("click", function () {
+      menuIcon.classList.toggle("open");
+      headerContent.classList.toggle("open");
+    });
+  });
+</script>
