@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (variant) {
       selectedVariantId = variant.id;
-      console.log('Selected Variant ID:', selectedVariantId);
+      console.log('Selected Variant ID is ', selectedVariantId);
     } else {
       console.log('Variant not found');
     }
