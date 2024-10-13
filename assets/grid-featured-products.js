@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   let selectedVariantId = null;
   let softWinerJacketId = 49965338788132;
+  let selectedColor = '';
 
   productLinks.forEach(function (link) {
     link.addEventListener("click", function (event) {
@@ -123,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedSize.innerText = this.innerText;
         sizesMenu.style.display = "none";
         showDropDown = false;
-        findVariantId(data, selectedSize.innerText);
+        findVariantId(data, selectedSize.innerText, selectedColor);
       });
     });
 
@@ -194,25 +195,21 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(div);
   }
 
+  //gets selected color value
+  document.querySelectorAll(".color-variant input").forEach((color) => {
+    if(color.checked) {
+        selectedColor = color.value;
+        console.log("selected color", selectedColor);
+    }
+  })
+
   // Find variant id based on selected color & size
   function findVariantId(data, selectedSize) {
-    //gets selected color value
-    let selectedColor = '';
-    document.querySelectorAll(".color-variant input").forEach((color) => {
-      if(color.checked) {
-          selectedColor = color.value;
-          console.log("selected color", selectedColor);
-      }
-    })
 
     let variant = data.variants.find(variant => {
       return variant.option1 === selectedSize && variant.option2.toLowerCase() === selectedColor;
     });
 
-    for(let i=0; i<data.variants.length; i++) {
-      console.log("option 1", data.variants[i].option1);
-      console.log("option 2", data.variants[i].option2)
-    }
     console.log(selectedColor)
     console.log(selectedSize)
 
@@ -275,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     } else {
       let errorMsg = "Please select a size and color first!";
-      document.getElementById("update-msg").innerHTML = errorMsg;
+      document.getElementById("update-msg").appendChild(errorMsg);
     }
   });
 
