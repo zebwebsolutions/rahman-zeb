@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Find variant id based on selected color & size
-  function findVariantId(data, selectedSize, selectedColor) {
+  function findVariantId(data, selectedSize) {
     //gets selected color value
     let selectedColor = '';
     document.querySelectorAll(".color-variant input").forEach((color) => {
