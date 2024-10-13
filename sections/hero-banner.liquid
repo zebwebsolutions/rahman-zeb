@@ -27,14 +27,14 @@
       <span class="bar"></span>
       <span class="bar"></span>
     </div>
-  
+
     <!-- Logo aligned in the center -->
     <div class="header-logo">
       {% if section.settings.header_logo != blank %}
         <img src="{{ section.settings.header_logo | img_url: 'medium' }}" alt="Logo" class="hero-banner__logo">
       {% endif %}
     </div>
-  
+
     <!-- Hidden elements for mobile, revealed when menu is clicked -->
     <div class="hidden-elements">
       <div class="hero-banner__header-text">
@@ -156,172 +156,314 @@
 
 <!-- Styles for the Hero Banner -->
 <style>
-  @font-face {
-    font-family: Jost;
-    src: url({{ 'Jost-Light.woff' | asset_url }}) format("woff2");
-    font-weight: 300;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: Jost;
-    src: url({{ 'Jost-Regular.woff' | asset_url }}) format("woff2");
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: Jost;
-    src: url({{ 'Jost-SemiBold.woff' | asset_url }}) format("woff2");
-    font-weight: 500;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: Lustria;
-    src: url({{ 'Lustria-Regular.woff' | asset_url }}) format("woff2");
-    font-weight: 400;
-    font-style: normal;
-  }
-  .hero-banner__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f5f5f5;
-    padding: 10px 50px;
-  }
-  .hero-banner__header-text * {
-    font-size: 16px;
-  }
-  .header-logo img {
-    vertical-align: middle;
-  }
-  .header-cta a {
-    background: #fff544;
-    text-decoration: none;
-    padding: 8px 40px;
-  }
-  .hero-banner__content {
-    max-width: 520px;
-    background: #fff;
-    padding: 10px 50px;
-    padding-bottom: 40px;
-  }
-  .hero-banner__content h2 {
-    font-size: 70px;
-    line-height: 70px;
-    font-weight: 500;
-    margin: 0;
-    margin-bottom: 50px;
-  }
-  .hero-banner__content p {
-    margin: 0;
-    margin-bottom: 50px;
-  }
-  .hero-banner__content-button {
-    background: #000;
-    padding: 8px 40px;
-    color: #fff;
-    text-decoration: none;
-  }
-  .hero-banner__footer {
-    background: #f5f5f5;
-    padding: 10px 50px;
-    text-align: center;
-  }
-  .hero-banner__footer * {
-    margin: 0;
-  }
-  .content-area {
-    display: flex;
-    height: 86vh;
-    flex-direction: column;
-  }
-  .hero-banner__bg {
-    background: url(https://rahman-zeb-651-teststore.myshopify.com/cdn/shop/t/2/assets/banner-bg.svg?v=93124217167391876821728627086)
-      no-repeat center bottom;
-    background-size: 100%;
-    flex: 1.2;
-  }
-  .hero-banner__bg-wrapper {
-    flex: 1;
-    background: url(https://rahman-zeb-651-teststore.myshopify.com/cdn/shop/t/2/assets/banner-bg.svg?v=93124217167391876821728627086)
-      no-repeat 550px top;
-    background-size: 100%;
-    display: flex;
-    align-items: center;
-  }
+    @font-face {
+      font-family: Jost;
+      src: url({{ 'Jost-Light.woff' | asset_url }}) format("woff2");
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: Jost;
+      src: url({{ 'Jost-Regular.woff' | asset_url }}) format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: Jost;
+      src: url({{ 'Jost-SemiBold.woff' | asset_url }}) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: Lustria;
+      src: url({{ 'Lustria-Regular.woff' | asset_url }}) format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    .hero-banner {
+      font-family: Jost;
+      color: #000;
+    }
+    .hero-banner__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f5f5f5;
+      padding: 10px 50px;
+    }
+    .hero-banner__header-text * {
+      font-size: 16px;
+    }
+    .header-logo img {
+      vertical-align: middle;
+    }
+    .header-cta a {
+      background: #fff544;
+      text-decoration: none;
+      padding: 8px 40px;
+    }
+    .hero-banner__content {
+      max-width: 520px;
+      background: #fff;
+      padding: 10px 50px;
+      padding-bottom: 40px;
+    }
+    .hero-banner__content h2 {
+      font-size: 70px;
+      line-height: 70px;
+      font-weight: 500;
+      margin: 0;
+      margin-bottom: 50px;
+    }
+    .hero-banner__content p {
+      margin: 0;
+      margin-bottom: 50px;
+    }
+    .hero-banner__content-button {
+      background: #000;
+      padding: 8px 40px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .hero-banner__footer {
+      background: #f5f5f5;
+      padding: 10px 50px;
+      text-align: center;
+    }
+    .hero-banner__footer * {
+      margin: 0;
+    }
+    .content-area {
+      display: flex;
+      height: 86vh;
+      flex-direction: column;
+    }
+    .hero-banner__bg {
+      background: url(https://rahman-zeb-651-teststore.myshopify.com/cdn/shop/t/2/assets/banner-bg.svg?v=93124217167391876821728627086)
+        no-repeat center bottom;
+      background-size: 100%;
+      flex: 1.2;
+    }
+    .hero-banner__bg-wrapper {
+      flex: 1;
+      background: url(https://rahman-zeb-651-teststore.myshopify.com/cdn/shop/t/2/assets/banner-bg.svg?v=93124217167391876821728627086)
+        no-repeat 550px top;
+      background-size: 100%;
+      display: flex;
+      align-items: center;
+    }
 
-  /* header buttons hover effect */
-  .hero-banner__header-button,
-  .hero-banner__content-button {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    z-index: 1;
-  }
+    /* header buttons hover effect */
+    .hero-banner__header-button,
+    .hero-banner__content-button {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      z-index: 1;
+    }
 
-  .hero-banner__header-button {
-    color: #000;
-    background-color: #fff;
-  }
+    .hero-banner__header-button {
+      color: #000;
+      background-color: #fff;
+    }
 
-  .hero-banner__content-button {
-    color: #fff;
-    background-color: #000;
-  }
+    .hero-banner__content-button {
+      color: #fff;
+      background-color: #000;
+    }
 
-  .hero-banner__header-button::before,
-  .hero-banner__content-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    transition: left 0.3s ease;
-    z-index: -1;
-  }
+    .hero-banner__header-button::before,
+    .hero-banner__content-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
 
-  .hero-banner__header-button::before {
-    background: #000;
-  }
+    .hero-banner__header-button::before {
+      background: #000;
+    }
 
-  .hero-banner__content-button::before {
-    background: #fff544;
-  }
+    .hero-banner__content-button::before {
+      background: #fff544;
+    }
 
-  .hero-banner__header-button:hover::before,
-  .hero-banner__content-button:hover::before {
-    left: 0;
-  }
+    .hero-banner__header-button:hover::before,
+    .hero-banner__content-button:hover::before {
+      left: 0;
+    }
 
-  .hero-banner__header-button:hover {
-    color: #fff;
-  }
+    .hero-banner__header-button:hover {
+      color: #fff;
+    }
 
-  .hero-banner__content-button:hover {
-    color: #000;
-  }
+    .hero-banner__content-button:hover {
+      color: #000;
+    }
 
-  .hero-banner__header-button img,
-  .hero-banner__content-button img {
-    margin-left: 10px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-  }
+    .hero-banner__header-button img,
+    .hero-banner__content-button img {
+      margin-left: 10px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
 
-  .hero-banner__header-button:hover img,
-  .hero-banner__content-button:hover img {
-    transform: translateX(5px);
-  }
+    .hero-banner__header-button:hover img,
+    .hero-banner__content-button:hover img {
+      transform: translateX(5px);
+    }
 
-  .hero-banner__header-button:hover img {
-    filter: invert(1);
-  }
+    .hero-banner__header-button:hover img {
+      filter: invert(1);
+    }
 
-  .hero-banner__content-button:hover img {
-    filter: invert(1);
+    .hero-banner__content-button:hover img {
+      filter: invert(1);
+    }
+    .header-cta {
+      display: flex;
+    }
+
+    /* Mobile Styling */
+    @media (max-width: 767px) {
+      /* header styling */
+
+      .hero-banner__header {
+          display: none;
+      }
+      .hero-banner__header-mobile {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #f7f7f7;
+          padding: 23px 16px;
+          position: relative;
+      }
+      .hero-banner__header-mobile .hidden-elements {
+          display: none;
+      }
+      .header-logo {
+        flex: 1;
+        text-align: center;
+      }
+
+      .menu-icon {
+        width: 18px;
+        height: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
+      .menu-icon span {
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+      }
+
+      .header-content {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-banner__header-text,
+      .header-cta {
+        margin-top: 15px;
+      }
+
+      /* Open Menu (toggled) */
+      .menu-icon.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 4px);
+      }
+
+      .menu-icon.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-icon.open span:nth-child(3) {
+        transform: rotate(-44deg) translate(4px, -4px);
+      }
+
+      .header-content.open {
+        display: flex;
+      }
+
+      /* mobile menu */
+      .hero-banner__header-mobile.open .hidden-elements {
+          display: block;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          background: #f2f2f2;
+          padding-bottom: 20px;
+      }
+      .hero-banner__header-mobile .header-cta a {
+          margin: auto;
+      }
+
+      /* product grid styling */
+
+      .featured-products-grid {
+          margin-top: 40px;
+          padding: 10px 16.72px;
+      }
+      .featured-products-grid .grid {
+          grid-gap: 4px;
+          grid-template-columns: 1fr 1fr;
+      }
+      .content-area {
+          height: auto;
+          text-align: center;
+      }
+      .hero-banner__bg {
+          display: none;
+      }
+      .hero-banner__bg-wrapper {
+          background-position: center bottom !important;
+          background-size: 170%;
+      }
+      .hero-banner__content {
+          background: transparent;
+          max-width: 100% !important;
+      }
+      .hero-banner__content h2 {
+          font-size: 30px;
+          line-height: 30px;
+          font-weight: 500;
+          margin: 0;
+          margin-bottom: 24px;
+          margin-top: 39px;
+      }
+      .hero-banner__content p {
+          margin-bottom: 12px;
+      }
+      .hero-banner__content-button {
+          margin-top: 192px;
+      }
+      .hide-on-mobile {
+          display: none;
+      }
+      .product-modal {
+          z-index: 3 !important;
+      }
   }
-  .header-cta {
-    display: flex;
+  @media (min-width: 768px) {
+      .hero-banner__header-mobile {
+          display: none;
+      }
+      .mobile-only {
+          display: none;
+      }
   }
 </style>
