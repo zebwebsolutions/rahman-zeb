@@ -208,6 +208,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return variant.option1 === selectedSize && variant.option2 === selectedColor;
     });
 
+    console.log("varaint data", variant);
+    console.log(variant.option1);
+    console.log(variant.option2);
+    console.log(selectedColor)
+    console.log(selectedSize)
+
+
     if (variant) {
       selectedVariantId = variant.id;
       console.log('Selected Variant ID:', selectedVariantId);
