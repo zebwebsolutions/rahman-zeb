@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedSize.innerText = this.innerText;
         sizesMenu.style.display = "none";
         showDropDown = false;
-        findVariantId(data, selectedSize.innerText, document.querySelector('input[name="product-color"]:checked').value);
+        findVariantId(data, selectedSize.innerText);
       });
     });
 
@@ -195,14 +195,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Find variant id based on selected color & size
   function findVariantId(data, selectedSize, selectedColor) {
-    // gets selected color value
-    // let selectedColor = '';
-    // document.querySelectorAll(".color-variant input").forEach((color) => {
-    //   if(color.checked) {
-    //       selectedColor = color.value;
-    //       console.log("selected color", selectedColor);
-    //   }
-    // })
+    //gets selected color value
+    let selectedColor = '';
+    document.querySelectorAll(".color-variant input").forEach((color) => {
+      if(color.checked) {
+          selectedColor = color.value;
+          console.log("selected color", selectedColor);
+      }
+    })
 
     let variant = data.variants.find(variant => {
       return variant.option1 === selectedSize && variant.option2 === selectedColor;
