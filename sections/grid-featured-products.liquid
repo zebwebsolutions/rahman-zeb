@@ -1,5 +1,8 @@
 <!-- Featured Products Grid Section -->
 <div class="featured-products-grid">
+  <div class="featured-products-title">
+    <h2>{{ section.settings.section_heading }}</h2>
+  </div>
   <div class="grid">
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
