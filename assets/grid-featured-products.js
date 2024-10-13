@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   let selectedVariantId = null;
   let softWinerJacketId = 49965338788132;
-  let selectedColor = '';
 
   productLinks.forEach(function (link) {
     link.addEventListener("click", function (event) {
@@ -99,6 +98,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addColorInputs(colorsData, colorVariations);
     addSizeDropDown(sizesData, sizeVariations);
+
+    //gets selected color value
+    let selectedColor = '';
+    document.querySelectorAll(".color-variant input").forEach((color) => {
+      if(color.checked) {
+          selectedColor = color.value;
+          console.log("selected color", selectedColor);
+      }
+    })
 
     // Now that sizesList is in the DOM, we can attach event listeners
     let sizesMenu = document.getElementById("sizesList");
@@ -194,14 +202,6 @@ document.addEventListener("DOMContentLoaded", function () {
     div.appendChild(sizesList);
     console.log(div);
   }
-
-  //gets selected color value
-  document.querySelectorAll(".color-variant input").forEach((color) => {
-    if(color.checked) {
-        selectedColor = color.value;
-        console.log("selected color", selectedColor);
-    }
-  })
 
   // Find variant id based on selected color & size
   function findVariantId(data, selectedSize, selectedColor) {
