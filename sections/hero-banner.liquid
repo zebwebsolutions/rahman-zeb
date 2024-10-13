@@ -441,6 +441,7 @@
           font-size: 30px;
           line-height: 30px;
           font-weight: 500;
+          font-family: Jost;
           margin: 0;
           margin-bottom: 24px;
           margin-top: 39px;
@@ -457,6 +458,12 @@
       .product-modal {
           z-index: 3 !important;
       }
+      .hero-banner__footer .mobile-only {
+        font-size: 14px;
+      }
+      .hero-banner__footer {
+          padding: 10px;
+      }
   }
   @media (min-width: 768px) {
       .hero-banner__header-mobile {
@@ -468,15 +475,14 @@
   }
 </style>
 
-
 <script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function () {
-    let menuIcon = document.querySelector(".hero-banner__header-mobile .menu-icon");
-    let headerContent = document.querySelector(".hero-banner__header-mobile");
-  
-    menuIcon.addEventListener("click", function () {
-      menuIcon.classList.toggle("open");
-      headerContent.classList.toggle("open");
+  document.addEventListener('DOMContentLoaded', function () {
+    let menuIcon = document.querySelector('.hero-banner__header-mobile .menu-icon');
+    let headerContent = document.querySelector('.hero-banner__header-mobile');
+
+    menuIcon.addEventListener('click', function () {
+      menuIcon.classList.toggle('open');
+      headerContent.classList.toggle('open');
     });
   });
 </script>
