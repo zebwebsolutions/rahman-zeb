@@ -244,6 +244,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(data => {
         console.log('Product added to cart', data);
         alert('Product added to cart!');
+        let successMsg = "Product added to cart successfully!"
+        document.getElementById("update-msg").appendChild(successMsg);
         if (data.variant_options.includes("Black") && data.variant_options.includes("M")) {
           // Automatically add the "Soft Winter Jacket" to the cart
           fetch('/cart/add.js', {
@@ -259,7 +261,9 @@ document.addEventListener("DOMContentLoaded", function () {
           .then(response => response.json())
           .then(data => {
             console.log('Soft Winter Jacket added to cart', data);
-            alert('Soft Winter Jacket added to cart!');
+            alert('Soft Winter Jacket added to cart for Free!');
+            let freeOffer = "Soft Winter Jacket added to cart for Free!";
+            document.getElementById("update-msg").appendChild(freeOffer);
           })
           .catch(error => {
             console.error('Error adding Soft Winter Jacket to cart', error);
@@ -270,7 +274,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error('Error adding product to cart', error);
       });
     } else {
-      alert('Please select a size and color first!');
+      let errorMsg = "Please select a size and color first!";
+      document.getElementById("update-msg").innerHTML = errorMsg;
     }
   });
 
