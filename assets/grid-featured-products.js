@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     } else {
       let errorMsg = "Please select a size and color first!";
-      document.getElementById("update-msg").appendChild(errorMsg);
+      document.getElementById("update-msg").innerHTML = errorMsg;
     }
   });
 
