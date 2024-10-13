@@ -209,8 +209,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     console.log("varaint data", variant);
-    console.log(variant.option1);
-    console.log(variant.option2);
+    for(let i=0; i<data.variants.length; i++) {
+      console.log("option 1", data.variants[i].option1);
+      console.log("option 2", data.variants[i].option2)
+    }
     console.log(selectedColor)
     console.log(selectedSize)
 
