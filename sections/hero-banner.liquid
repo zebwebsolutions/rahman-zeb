@@ -170,7 +170,7 @@
     }
     @font-face {
       font-family: Jost;
-      src: url({{ 'Jost-SemiBold.woff' | asset_url }}) format("woff2");
+      src: url({{ 'Jost-Medium.woff2' | asset_url }}) format("woff2");
       font-weight: 500;
       font-style: normal;
     }
@@ -180,7 +180,7 @@
       font-weight: 400;
       font-style: normal;
     }
-    .hero-banner {
+    .hero-banner * {
       font-family: Jost;
       color: #000;
     }
@@ -203,7 +203,7 @@
       padding: 8px 40px;
     }
     .hero-banner__content {
-      max-width: 520px;
+      max-width: 580px;
       background: #fff;
       padding: 10px 50px;
       padding-bottom: 40px;
@@ -211,6 +211,7 @@
     .hero-banner__content h2 {
       font-size: 70px;
       line-height: 70px;
+      font-family: Jost;
       font-weight: 500;
       margin: 0;
       margin-bottom: 50px;
